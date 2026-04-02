@@ -1,0 +1,229 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --bg: #0f0f11;
+  --bg2: #161619;
+  --bg3: #1d1d21;
+  --border: rgba(255, 255, 255, 0.07);
+  --border2: rgba(255, 255, 255, 0.14);
+  --text: #f0efe8;
+  --text2: #9896a0;
+  --text3: #5e5d66;
+  --accent: #e8a23a;
+  --accent2: #f0c26a;
+  --teal: #3ac4a0;
+}
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 22px 36px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+header h1 {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+header span {
+  font-size: 12px;
+  color: var(--text3);
+  font-family: "DM Mono", monospace;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  flex: 1;
+  min-height: 0;
+}
+.controls {
+  border-right: 1px solid var(--border);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+.control-row {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 13px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transition: border-color 0.18s;
+}
+.control-row:hover {
+  border-color: var(--border2);
+}
+.control-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.control-name {
+  font-size: 13px;
+  color: var(--text2);
+}
+.control-unit {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: "DM Mono", monospace;
+}
+.control-value-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  background: var(--bg3);
+  border-radius: 99px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(232, 162, 58, 0.18);
+  transition: transform 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+}
+input[type="number"] {
+  width: 66px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+  padding: 5px 8px;
+  text-align: right;
+  outline: none;
+  transition: border-color 0.18s;
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"]:focus {
+  border-color: var(--accent);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 2px;
+}
+.stat-card {
+  background: var(--bg3);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--text3);
+  margin-bottom: 3px;
+}
+.stat-value {
+  font-family: "DM Mono", monospace;
+  font-size: 15px;
+  color: var(--teal);
+}
+.launch-btn {
+  margin-top: 6px;
+  background: var(--accent);
+  color: #1a1200;
+  border: none;
+  border-radius: 9px;
+  padding: 13px 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.18s, transform 0.1s;
+}
+.launch-btn:hover {
+  background: var(--accent2);
+}
+.launch-btn:active {
+  transform: scale(0.98);
+}
+.reset-btn {
+  background: transparent;
+  color: var(--text3);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 10px 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+  transition: color 0.18s, border-color 0.18s;
+}
+.reset-btn:hover {
+  color: var(--text2);
+  border-color: var(--border2);
+}
+.canvas-wrap {
+  position: relative;
+  overflow: hidden;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.tlabel {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 12px;
+  color: var(--text3);
+  font-family: "DM Mono", monospace;
+  pointer-events: none;
+}
+@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .controls {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 320px;
+  }
+}
